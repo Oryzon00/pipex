@@ -12,12 +12,14 @@ Doit reproduire le comportement de:
 
 // each cmd needs a stdin (input) and returns an output (to stdout)
    
-    infile                                             outfile
-as stdin for cmd1                                 as stdout for cmd2            
-       |                        PIPE                        ↑
-       |           |---------------------------|            |
-       ↓             |                       |              |
-      cmd1   -->    end[1]       ↔       end[0]   -->     cmd2           
+
+CHILD PROCESS												 PARENT PROCESS
+    infile                                            			 outfile
+as stdin for cmd1                                 			as stdout for cmd2            
+       |                        PIPE                        		↑
+       |           |---------------------------|            		|
+       ↓             |                       |              		|
+      cmd1   -->    pont/end[1]       ↔       pont/end[0]   -->     cmd2           
                      |                       |
             cmd1   |---------------------------|  end[0]
            output                             reads end[1]
@@ -27,6 +29,8 @@ as stdin for cmd1                                 as stdout for cmd2
         cmd1 stdout)                           cmd2 stdin)
 
 
+Liste des fd opens pour linux:
+ls -la /proc/$$/fd
 
 fonctions autorises:
 -access
