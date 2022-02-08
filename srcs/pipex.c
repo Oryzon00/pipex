@@ -6,79 +6,72 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 19:43:31 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/07 21:34:38 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/08 21:12:15 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	pipex(int f1, int f2)
+
+
+
+
+int	left_side(int infile, int *pont, char *cmd1, char **envp)
 {
-	int 	pont[2];
-	pid_t	parent;
+	if (dup2(infile, STDIN_FILENO) < 0)
+		return (EXIT_FAILURE);	
+	if (dup2(pont[1], STDOUT_FILENO) < 0)
+		return (EXIT_FAILURE);
+	close(pont[0]); //on ferme autre cote du pont;
+	close(infile); //il faut fermer ce qu'on ouvre
 
-	pipe(pont);
-	parent = fork();
-	if (parent < 0)
-	{
-		perror("Fork: ");
-		return ;
-	}
-	if (parent == 0)
-	{
-        //child_process(f1, cmd1);
-		//pont[1] is child process
-		// For the child process, we want infile to be our stdin (we want it as input), 
-		// and end[1] to be our stdout (we want to write to end[1] the output of cmd1, 
-		// so that the parent will be able to read it).
+	//execve des paths
 
-		//child writes, parent reads
-	
-	}
-	else
-	{
-		//child_process(f1, cmd1);
-		//pont[0] is the parent process;
-		// In the parent process, we want end[0] to be our stdin (end[0] at this point has already read 
-		// from end[1] the output of cmd1), and outfile to be our stdout (we want to write to it the output 
-		// of cmd2).
-
-		//child writes, parent reads
-
-
-	}
-		
+	//Si on arrive la, c'est que execve n'a pas marche et donc c'est un failure;
+	return(EXIT_FAILURE);
 }
 
+int	right_side(int outfile, int *pont, char *cmd2, char **envp)
+{
+	int	status;
 
-# child_process(f1, cmd1);
-// add protection if dup2() < 0
-// dup2 close stdin, f1 becomes the new stdin
-dup2(f1, STDIN_FILENO); // we want f1 to be execve() input
-dup2(end[1], STDOUT_FILENO); // we want end[1] to be execve() stdout
-close(end[0]) # --> always close the end of the pipe you don't use,
-                    as long as the pipe is open, the other end will 
-                    be waiting for some kind of input and will not
-                    be able to finish its process
-close(f1)
-// execve function for each possible path (see below)
-exit(EXIT_FAILURE);
+	if (dup2(outfile, STDOUT_FILENO) < 0)
+		return (EXIT_FAILURE);
+	if (dup2(pont[0], STDIN_FILENO) < 0)
+		return (EXIT_FAILURE);
+	close(pont[1]); //on ferme autre cote du pont
+	close(outfile);
+	
+	//execve fuction for paths
 
+	//Si on arrive la c'est que execve a pas bien marche;
+	return (EXIT_FAILURE);
+}
 
+void	pipex(int infile, int outfile, char **argv, char **envp)
+{
+	int 	pont[2];
+	int		status;
+	pid_t	child_left;
+	pid_t	child_right;
 
-//FIRST write, then read!
-//--> child first, then parent
-
-//     infile                                             outfile
-// as stdin for cmd1                                 as stdout for cmd2            
-//        |                        PIPE                        ↑
-//        |           |---------------------------|            |
-//        ↓             |                       |              |
-//       cmd1   -->    end[1]       ↔       end[0]   -->     cmd2           
-//                      |                       |
-//             cmd1   |---------------------------|  end[0]
-//            output                             reads end[1]
-//          is written                          and sends cmd1
-//           to end[1]                          output to cmd2
-//        (end[1] becomes                      (end[0] becomes 
-//         cmd1 stdout)                           cmd2 stdin)
+	pipe(pont);
+	child_left = fork();
+	if (child_left < 0)
+		return (perror("Fork: "));
+	if (child_left == 0)
+		left_side(infile, pont, argv[1], envp);
+		//if LEFT_SIde == EXIT FAILURE --> lancer clean + fermeture programme	}
+	waitpid(child_left, &status, 0); //on attends que left soit fini pour recuperer
+									// l'output dans pont[0]
+	child_right = fork();
+	if (child_right < 0)
+		return (perror("Fork: "));
+	if (child_right == 0)
+		right_side(outfile, pont, argv[4], envp);
+		//if RIGHT_SIDE == EXIT FAILURE --> lancer clean + fermeture programme
+	close(pont[0]); //on ferme le pont --> parent ne fait rien
+	close(pont[1]);
+	waitpid(child_left, &status, 0); //on attends que les enfants est fini leurs taches
+	waitpid(child_right, &status, 0);
+}

@@ -1,7 +1,7 @@
 SRCS =	srcs/main.c \
 		srcs/check_error.c \
-		
-
+		srcs/pipex.c \
+		srcs/pipex_utils \
 
 OBJ = $(SRCS:.c=.o)
 

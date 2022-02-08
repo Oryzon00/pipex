@@ -4,7 +4,6 @@ A lire:
 - exec ve
 
 Format execution:
-./pipex file1 cmd1 cmd2 file2
 ./pipex infile cmd1 cmd2 outfile
 Doit reproduire le comportement de:
 < infile cmd1 | cmd2 > outfile
@@ -36,7 +35,7 @@ fonctions autorises:
 -access
 -open
 -unlink
-- close
+-close
 -read
 -write
 -malloc
