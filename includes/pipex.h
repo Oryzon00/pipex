@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:29:43 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 19:12:04 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:26:33 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-void	check_error(int argc, char **argv);
-void	pipex(int infile, int outfile, t_arg_main *arg_main);
-int		exec_cmd(t_arg_main *arg_main, int cmd_num);
-void 	free_path_and_args(char **cmd_paths, char **cmd_args);
-void	free_split(char **str);
-void	add_slash(char **str);
-void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp);
 
 
 typedef struct s_arg_main
@@ -35,6 +28,15 @@ typedef struct s_arg_main
 	char	**argv;
 	char	**envp;
 } t_arg_main;
+
+void	check_error(int argc, char **argv);
+void	pipex(int infile, int outfile, t_arg_main *arg_main);
+int		exec_cmd(t_arg_main *arg_main, int cmd_num);
+void	free_path_and_args(char **cmd_paths, char **cmd_args, char *cmd_no_arg);
+void	free_split(char **str);
+void	add_slash(char **str);
+void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp);
+void	perror_and_exit(void);
 
 
 #endif
