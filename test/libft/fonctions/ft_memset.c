@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ajung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:35:33 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/23 11:35:35 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include <stddef.h>
 
-void	check_error(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (argc != 5)
+	int		i;
+	char	*adresse;
+
+	i = 0;
+	adresse = s;
+	while (n)
 	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
+		adresse[i] = (unsigned char) c;
+		i++;
+		n--;
 	}
-	(void) argv;
+	return (s);
 }

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ajung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:33:12 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/23 11:33:15 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	check_error(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (argc != 5)
+	while (lst && lst->next)
 	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
+		lst = lst->next;
 	}
-	(void) argv;
+	return (lst);
 }

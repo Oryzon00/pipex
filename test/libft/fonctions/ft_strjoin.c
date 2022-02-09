@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:41:04 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/25 18:28:27 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	check_error(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (argc != 5)
-	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
-	}
-	(void) argv;
+	int		i;
+	int		j;
+	char	*output;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	output = (char *)malloc(sizeof(char)
+			* (ft_strlen(s1) + ft_strlen(s2)+ 1));
+	if (output == NULL)
+		return (NULL);
+	while (s1[i])
+		output[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		output[j++] = s2[i++];
+	output[j] = '\0';
+	return (output);
 }

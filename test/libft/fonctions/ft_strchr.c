@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:33:44 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/24 17:01:19 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	check_error(int argc, char **argv)
+char	*ft_strchr(const char *s, int c)
 {
-	if (argc != 5)
+	unsigned int	i;
+	unsigned char	p;
+
+	p = (unsigned char) c;
+	i = 0;
+	while (s[i])
 	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
+		if (s[i] == p)
+			return ((char *)&(s[i]));
+		i++;
 	}
-	(void) argv;
+	if (p == 0)
+		return ((char *)&(s[i]));
+	return (NULL);
 }

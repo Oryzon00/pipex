@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/24 17:06:31 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/24 18:15:41 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	check_error(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if (argc != 5)
+	size_t	i;
+	size_t	dst_size;
+	size_t	src_size;
+
+	dst_size = ft_strlen((const char *)dst);
+	src_size = ft_strlen(src);
+	if (size <= dst_size)
+		return (size + src_size);
+	i = 0;
+	while (src[i] && (i + dst_size + 1) < size)
 	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
+		dst[i + dst_size] = src[i];
+		i++;
 	}
-	(void) argv;
+	dst[i + dst_size] = '\0';
+	return (dst_size + src_size);
 }

@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:33:28 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/25 18:09:02 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../libft.h"
 
-void	check_error(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (argc != 5)
+	size_t		i;
+	char		*dest_ptr;
+	const char	*src_ptr;
+
+	if (!dest && !src)
+		return (NULL);
+	dest_ptr = dest;
+	src_ptr = src;
+	i = 0;
+	if (dest_ptr >= src_ptr)
+		while (n-- > 0)
+			dest_ptr[n] = src_ptr[n];
+	else
 	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
+		while (i < n)
+		{
+			dest_ptr[i] = src_ptr[i];
+			i++;
+		}
 	}
-	(void) argv;
+	return (dest);
 }
