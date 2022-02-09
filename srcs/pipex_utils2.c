@@ -6,11 +6,17 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:44:52 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 19:09:22 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/09 20:26:23 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	perror_and_exit(void)
+{
+	perror("Error");
+	exit (-1);
+}
 
 void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp)
 {
@@ -19,10 +25,11 @@ void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp)
 	arg_main->envp = envp;
 }
 
-void	free_path_and_args(char **cmd_paths, char **cmd_args)
+void	free_path_and_args(char **cmd_paths, char **cmd_args, char *cmd_no_arg)
 {
 	free_split(cmd_paths);
 	free_split(cmd_args);
+	free(cmd_no_arg);
 }
 
 void	free_split(char **str)
