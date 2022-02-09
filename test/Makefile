@@ -1,8 +1,4 @@
-SRCS =	srcs/main.c \
-		srcs/check_error.c \
-		srcs/pipex.c \
-		srcs/pipex_utils.c \
-		srcs/pipex_utils2.c \
+SRCS =	main.c \
 
 OBJ = $(SRCS:.c=.o)
 
@@ -10,11 +6,11 @@ CC = clang
 
 DEBUG = -fsanitize=address 
 
-CFLAGS = -Wall -Wextra -Werror -g3 
+CFLAGS = -g3 
 
 OPTI = -O3 -flto
 
-NAME = pipex
+NAME = test
 
 INC_DIR = includes
 

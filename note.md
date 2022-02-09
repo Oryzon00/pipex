@@ -28,6 +28,71 @@ as stdin for cmd1                                 			as stdout for cmd2
         cmd1 stdout)                           cmd2 stdin)
 
 
+
+
+
+static char *ft_get_path(char **env)
+{
+    char    *res;
+    int        i;
+
+    i = 0;
+    while (env[i] && ft_strncmp(env[i], "PATH=", 5) != 0)
+        i++;
+    if (env[i] == NULL)
+        return (NULL);
+    res = ft_strdup(env[i]);
+    if (res == NULL)
+        return (NULL);
+    return (res);
+}
+
+static int ft_check_path(char *path)
+{
+    char    **splitted;
+    char    **start;
+    int        i;
+
+    i = 0;
+    if (ft_strchr(path, ':') == NULL)
+    {
+        if (access(path + 5, F_OK) != 0)
+            return (0);
+        return (1);
+    }
+    splitted = ft_split(path, ':');
+    if (splitted == NULL)
+        return (0);
+    start = splitted;
+    splitted = splitted + 5;
+    while (splitted[i] != NULL)
+    {
+        if (access(splitted[i], F_OK) != 0)
+        {
+            ft_free_split(start);
+            return (0);
+        }
+        i++;
+    }
+    ft_free_split(start);
+    return (1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Liste des fd opens pour linux:
 ls -la /proc/$$/fd
 

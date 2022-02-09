@@ -6,18 +6,15 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 19:43:31 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/08 21:12:15 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:19:13 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-
-
-
-
-int	left_side(int infile, int *pont, char *cmd1, char **envp)
+int	left_side(int infile, int *pont, t_arg_main *arg_main)
 {
+	//cmd1 = argv[2]
 	if (dup2(infile, STDIN_FILENO) < 0)
 		return (EXIT_FAILURE);	
 	if (dup2(pont[1], STDOUT_FILENO) < 0)
@@ -31,8 +28,9 @@ int	left_side(int infile, int *pont, char *cmd1, char **envp)
 	return(EXIT_FAILURE);
 }
 
-int	right_side(int outfile, int *pont, char *cmd2, char **envp)
+int	right_side(int outfile, int *pont, t_arg_main *arg_main)
 {
+	//cmd2 = argv[3]
 	int	status;
 
 	if (dup2(outfile, STDOUT_FILENO) < 0)
@@ -48,7 +46,7 @@ int	right_side(int outfile, int *pont, char *cmd2, char **envp)
 	return (EXIT_FAILURE);
 }
 
-void	pipex(int infile, int outfile, char **argv, char **envp)
+void	pipex(int infile, int outfile, t_arg_main *arg_main)
 {
 	int 	pont[2];
 	int		status;
@@ -60,7 +58,7 @@ void	pipex(int infile, int outfile, char **argv, char **envp)
 	if (child_left < 0)
 		return (perror("Fork: "));
 	if (child_left == 0)
-		left_side(infile, pont, argv[1], envp);
+		left_side(infile, pont, arg_main);
 		//if LEFT_SIde == EXIT FAILURE --> lancer clean + fermeture programme	}
 	waitpid(child_left, &status, 0); //on attends que left soit fini pour recuperer
 									// l'output dans pont[0]
@@ -68,7 +66,7 @@ void	pipex(int infile, int outfile, char **argv, char **envp)
 	if (child_right < 0)
 		return (perror("Fork: "));
 	if (child_right == 0)
-		right_side(outfile, pont, argv[4], envp);
+		right_side(outfile, pont, arg_main);
 		//if RIGHT_SIDE == EXIT FAILURE --> lancer clean + fermeture programme
 	close(pont[0]); //on ferme le pont --> parent ne fait rien
 	close(pont[1]);

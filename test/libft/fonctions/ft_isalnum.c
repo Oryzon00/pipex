@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ajung <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 17:28:33 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 18:57:21 by ajung            ###   ########.fr       */
+/*   Created: 2021/11/23 11:38:59 by ajung             #+#    #+#             */
+/*   Updated: 2021/11/23 11:39:01 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-
-void	check_error(int argc, char **argv)
+int	ft_isalnum(int c)
 {
-	if (argc != 5)
-	{
-		ft_putstr_fd("Error: nombre d'argument != 4", 2);
-		exit (0);
-	}
-	(void) argv;
+	if ((('a' <= c) && (c <= 'z')) || (('A' <= c) && (c <= 'Z')))
+		return (1);
+	else if (('0' <= c) && (c <= '9'))
+		return (1);
+	else
+		return (0);
 }
