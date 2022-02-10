@@ -1,14 +1,13 @@
-total 64
-drwxr-xr-x  13 ajung  2021_paris    442 Feb  9 20:27 .
-drwxr-xr-x   3 ajung  2021_paris    102 Feb  7 16:44 ..
-drwxr-xr-x  15 ajung  2021_paris    510 Feb  9 19:19 .git
--rw-r--r--   1 ajung  2021_paris    430 Feb  7 16:44 .gitignore
--rw-r--r--   1 ajung  2021_paris    598 Feb  9 18:46 Makefile
-drwxr-xr-x   3 ajung  2021_paris    102 Feb  7 16:44 includes
--rw-r--r--   1 ajung  2021_paris     17 Feb  9 19:55 infile
-drwxr-xr-x   7 ajung  2021_paris    238 Feb  9 20:14 libft
--rw-r--r--   1 ajung  2021_paris   2338 Feb  9 16:02 note.md
--rw-r--r--   1 ajung  2021_paris      0 Feb  9 20:27 outfile
--rwxr-xr-x   1 ajung  2021_paris  16108 Feb  9 20:27 pipex
-drwxr-xr-x  12 ajung  2021_paris    408 Feb  9 20:27 srcs
-drwxr-xr-x   5 ajung  2021_paris    170 Feb  9 18:47 test
+total 68
+drwxr-xr-x 6 ajung 2021_paris  4096 Feb 10 18:57 .
+drwxr-xr-x 3 ajung 2021_paris  4096 Feb  2 18:25 ..
+drwxr-xr-x 8 ajung 2021_paris  4096 Feb 10 14:35 .git
+-rw-r--r-- 1 ajung 2021_paris   430 Feb  2 18:25 .gitignore
+drwxr-xr-x 2 ajung 2021_paris  4096 Feb 10 14:35 includes
+-rwxrwxrwx 1 ajung 2021_paris    17 Feb 10 14:35 infile
+drwxr-xr-x 4 ajung 2021_paris  4096 Feb 10 18:57 libft
+-rw-r--r-- 1 ajung 2021_paris   598 Feb 10 14:35 Makefile
+-rw-r--r-- 1 ajung 2021_paris  2338 Feb 10 14:35 note.md
+-rw-r--r-- 1 ajung 2021_paris     0 Feb 10 18:57 outfile
+-rwxr-xr-x 1 ajung 2021_paris 27456 Feb 10 18:57 pipex
+drwxr-xr-x 2 ajung 2021_paris  4096 Feb 10 18:57 srcs
