@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:29:43 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 20:26:33 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/10 15:35:15 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
-
-
 
 typedef struct s_arg_main
 {
 	int		argc;
 	char	**argv;
 	char	**envp;
-} t_arg_main;
+}	t_arg_main;
 
 void	check_error(int argc, char **argv);
 void	pipex(int infile, int outfile, t_arg_main *arg_main);
@@ -37,6 +36,5 @@ void	free_split(char **str);
 void	add_slash(char **str);
 void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp);
 void	perror_and_exit(void);
-
 
 #endif

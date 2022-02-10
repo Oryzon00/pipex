@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:44:52 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/09 20:26:23 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/10 18:28:49 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	perror_and_exit(void)
 {
-	perror("Error");
-	exit (-1);
+	perror("pipex");
+	exit (127);
 }
 
 void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp)
