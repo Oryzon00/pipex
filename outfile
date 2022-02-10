@@ -1,13 +1,9 @@
-total 68
-drwxr-xr-x 6 ajung 2021_paris  4096 Feb 10 18:57 .
-drwxr-xr-x 3 ajung 2021_paris  4096 Feb  2 18:25 ..
-drwxr-xr-x 8 ajung 2021_paris  4096 Feb 10 14:35 .git
--rw-r--r-- 1 ajung 2021_paris   430 Feb  2 18:25 .gitignore
-drwxr-xr-x 2 ajung 2021_paris  4096 Feb 10 14:35 includes
--rwxrwxrwx 1 ajung 2021_paris    17 Feb 10 14:35 infile
-drwxr-xr-x 4 ajung 2021_paris  4096 Feb 10 18:57 libft
--rw-r--r-- 1 ajung 2021_paris   598 Feb 10 14:35 Makefile
--rw-r--r-- 1 ajung 2021_paris  2338 Feb 10 14:35 note.md
--rw-r--r-- 1 ajung 2021_paris     0 Feb 10 18:57 outfile
--rwxr-xr-x 1 ajung 2021_paris 27456 Feb 10 18:57 pipex
-drwxr-xr-x 2 ajung 2021_paris  4096 Feb 10 18:57 srcs
+includes
+infile
+libft
+Makefile
+note.md
+outfile
+pipex
+pipexMedic
+srcs
