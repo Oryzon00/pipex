@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 21:11:11 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/10 18:56:36 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/11 18:18:08 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	exec_cmd(t_arg_main *arg_main, int cmd_num)
 	if (cmd_paths == NULL || cmd_no_arg == NULL)
 	{
 		free_path_and_args(cmd_paths, cmd_args, cmd_no_arg);
-		write(2, "Error: invalid cmd or path\n", 25);
+		write(2, "Error: invalid cmd or path\n", 27);
 		exit (1);
 	}
 	if (try_all_path(cmd_paths, cmd_no_arg, cmd_args, arg_main) == EXIT_FAILURE)

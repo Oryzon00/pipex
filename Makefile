@@ -3,6 +3,7 @@ SRCS =	srcs/main.c \
 		srcs/pipex.c \
 		srcs/pipex_utils.c \
 		srcs/pipex_utils2.c \
+		srcs/multi_pipex.c \
 
 OBJ = $(SRCS:.c=.o)
 
