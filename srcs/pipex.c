@@ -6,11 +6,13 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 19:43:31 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 16:16:27 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 20:34:16 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+//b;abodpfdfd
 
 int	left_side(int infile, int *pont, t_arg_main *arg_main)
 {
@@ -42,15 +44,14 @@ void	exit_status(int status2, int infile, int outfile)
 {
 	close(infile);
 	close(outfile);
-    if (WIFEXITED(status2) > 0)
+	if (WIFEXITED(status2) > 0)
 	{
 		status2 = (WEXITSTATUS(status2));
 		exit(status2);
 	}
-        
-    if (WIFSIGNALED(status2) > 0)
+	if (WIFSIGNALED(status2) > 0)
 	{
-        status2 = (WTERMSIG(status2));
+		status2 = (WTERMSIG(status2));
 		exit(status2);
 	}
 }
