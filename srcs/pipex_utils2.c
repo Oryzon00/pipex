@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:44:52 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/11 19:23:07 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 18:00:12 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	perror_and_exit(void)
 	exit (1);
 }
 
+//(*arg_main).pont = malloc(sizeof(int *) * (argc - 3));
 void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp)
 {
 	arg_main->argc = argc;
 	arg_main->argv = argv;
 	arg_main->envp = envp;
-	(*arg_main).pont = malloc(sizeof(int *) * (argc - 3));
 }
 
 void	free_path_and_args(char **cmd_paths, char **cmd_args, char *cmd_no_arg)

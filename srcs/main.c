@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 14:43:13 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/11 19:39:55 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 16:58:19 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@ int	main(int argc, char **argv, char **envp)
 		return (-1);
 	}
 	fill_arg_main(&arg_main, argc, argv, envp);
-	//pipex
-	multi_pipex(infile, outfile, &arg_main);
-	close(infile);
-	close(outfile);
-	dprintf(1, "on est a la fin\n");
-	return (0);
+	pipex (infile, outfile, &arg_main);
+	return (1);
 }

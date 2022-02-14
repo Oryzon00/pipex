@@ -1,1 +1,17 @@
-on est a la fin
+total 124
+drwxr-xr-x 7 ajung 2021_paris  4096 Feb 14 17:45 .
+drwxr-xr-x 4 ajung 2021_paris  4096 Feb 10 19:03 ..
+-rw-r--r-- 1 ajung 2021_paris  1181 Feb 14 17:44 cat
+drwxr-xr-x 2 ajung 2021_paris  4096 Feb 14 16:51 dossier
+drwxr-xr-x 8 ajung 2021_paris  4096 Feb 11 19:40 .git
+-rw-r--r-- 1 ajung 2021_paris   430 Feb  2 18:25 .gitignore
+drwxr-xr-x 2 ajung 2021_paris  4096 Feb 10 14:35 includes
+-rw-r--r-- 1 ajung 2021_paris    11 Feb 11 16:16 infile
+-rw-r--r-- 1 ajung 2021_paris   971 Feb 14 17:44 input
+drwxr-xr-x 4 ajung 2021_paris  4096 Feb 14 17:45 libft
+-rw-r--r-- 1 ajung 2021_paris   622 Feb 14 15:13 Makefile
+-rw-r--r-- 1 ajung 2021_paris  1417 Feb 10 18:59 note.md
+-rw-r--r-- 1 ajung 2021_paris     0 Feb 14 17:43 outfile
+-rwxr-xr-x 1 ajung 2021_paris 27696 Feb 14 17:45 pipex
+drwxr-xr-x 2 ajung 2021_paris  4096 Feb 14 17:45 srcs
+-rwxrwxrwx 1 ajung 2021_paris 41883 Feb 14 16:50 test.sh
