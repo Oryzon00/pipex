@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex_utils3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 14:43:13 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 20:15:45 by ajung            ###   ########.fr       */
+/*   Created: 2022/02/14 20:36:31 by ajung             #+#    #+#             */
+/*   Updated: 2022/02/14 20:37:03 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+int	relative_path(t_arg_main *arg_main, int cmd_num)
 {
-	int			infile;
-	int			outfile;
-	t_arg_main	arg_main;
+	char	*cmd_no_arg;
+	char	**cmd_args;
 
-	check_error(argc, argv);
-	infile = open(argv[1], O_RDONLY);
-	outfile = open (argv[argc - 1], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (infile < 0 || outfile < 0)
-	{
-		ft_putstr_fd("Error: open", 2);
-		return (-1);
-	}
-	fill_arg_main(&arg_main, argc, argv, envp);
-	pipex (infile, outfile, &arg_main);
-	return (1);
+	cmd_no_arg = get_cmd_no_arg(arg_main, cmd_num);
+	cmd_args = get_cmd_arg(arg_main->argv, cmd_num);
+	execve(cmd_no_arg, cmd_args, arg_main->envp);
+	free(cmd_no_arg);
+	free_split(cmd_args);
+	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 21:11:11 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 18:06:37 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 20:36:48 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,6 @@ int	try_all_path(char **cmd_paths, char *cmd_no_arg, char **cmd_args,
 	return (EXIT_SUCCESS);
 }
 
-void	absolute_path(t_arg_main *arg_main, int cmd_num)
-{
-	char	*cmd_no_arg;
-	
-	cmd_no_arg = get_cmd_no_arg(arg_main, cmd_num);
-	//execve(cmd_no_arg, argv, arg_main->envp);
-}
-
-//int execve(const char *path, char *const argv[], char *const envp[]);
-
 int	exec_cmd(t_arg_main *arg_main, int cmd_num)
 {
 	char	*cmd_no_arg;
@@ -95,7 +85,8 @@ int	exec_cmd(t_arg_main *arg_main, int cmd_num)
 	char	**cmd_args;
 
 	if (ft_strchr(arg_main->argv[cmd_num], '/') != NULL)
-		absolute_path(arg_main, cmd_num);
+		if (relative_path(arg_main, cmd_num) == EXIT_FAILURE)
+			return (EXIT_FAILURE);
 	cmd_args = get_cmd_arg(arg_main->argv, cmd_num);
 	cmd_paths = get_cmd_path(arg_main->envp);
 	cmd_no_arg = get_cmd_no_arg(arg_main, cmd_num);
