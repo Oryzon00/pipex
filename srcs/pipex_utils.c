@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 21:11:11 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 20:36:48 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 21:44:27 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	**get_cmd_arg(char **argv, int cmd_num)
 	char	**cmd_args;
 
 	cmd_args = ft_split(argv[cmd_num], ' ');
+	if (!cmd_args)
+		return (NULL);
 	return (cmd_args);
 }
 
@@ -52,6 +54,8 @@ char	*get_cmd_no_arg(t_arg_main *arg_main, int cmd_num)
 		return (NULL);
 	}
 	cmd_no_arg = ft_strdup(ret_split[0]);
+	if (!cmd_no_arg)
+		return (NULL);
 	free_split(ret_split);
 	return (cmd_no_arg);
 }
@@ -69,7 +73,7 @@ int	try_all_path(char **cmd_paths, char *cmd_no_arg, char **cmd_args,
 		if (!cmd)
 		{
 			free_path_and_args(cmd_paths, cmd_args, cmd_no_arg);
-			return (EXIT_FAILURE);
+			exit(-1);
 		}
 		execve(cmd, cmd_args, arg_main->envp);
 		free(cmd);
@@ -90,11 +94,11 @@ int	exec_cmd(t_arg_main *arg_main, int cmd_num)
 	cmd_args = get_cmd_arg(arg_main->argv, cmd_num);
 	cmd_paths = get_cmd_path(arg_main->envp);
 	cmd_no_arg = get_cmd_no_arg(arg_main, cmd_num);
-	if (cmd_paths == NULL || cmd_no_arg == NULL)
+	if (cmd_paths == NULL || cmd_no_arg == NULL || cmd_args == NULL)
 	{
 		free_path_and_args(cmd_paths, cmd_args, cmd_no_arg);
-		write(2, "Error: invalid cmd or path\n", 27);
-		exit (1);
+		write(2, "Error: invalid cmd or env path\n", 31);
+		exit (4);
 	}
 	if (try_all_path(cmd_paths, cmd_no_arg, cmd_args, arg_main) == EXIT_FAILURE)
 	{
