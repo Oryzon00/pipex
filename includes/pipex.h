@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 17:29:43 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 16:05:43 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 21:26:08 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ void	add_slash(char **str);
 void	fill_arg_main(t_arg_main *arg_main, int argc, char **argv, char **envp);
 void	perror_and_exit(void);
 void	multi_pipex(int infile, int outfile, t_arg_main *arg_main);
+int		relative_path(t_arg_main *arg_main, int cmd_num);
+char	**get_cmd_arg(char **argv, int cmd_num);
+char	*get_cmd_no_arg(t_arg_main *arg_main, int cmd_num);
+void	free_and_exit(char *str, char **ret_split);
 
 #endif

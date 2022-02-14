@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:44:52 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 19:49:09 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/14 21:17:37 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	add_slash(char **str)
 		tmp = str[i];
 		str[i] = ft_strjoin(str[i], "/");
 		free(tmp);
+		if (!str[i])
+			exit(-1);
 		i++;
 	}
 }
