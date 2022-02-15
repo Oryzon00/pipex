@@ -6,29 +6,29 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 16:23:03 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/07 16:23:05 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/15 15:02:35 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned int	i;
-	unsigned char	p;
+// char	*ft_strchr(const char *s, int c)
+// {
+// 	unsigned int	i;
+// 	unsigned char	p;
 
-	p = (unsigned char) c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == p)
-			return ((char *)&(s[i]));
-		i++;
-	}
-	if (p == 0)
-		return ((char *)&(s[i]));
-	return (NULL);
-}
+// 	p = (unsigned char) c;
+// 	i = 0;
+// 	while (s[i])
+// 	{
+// 		if (s[i] == p)
+// 			return ((char *)&(s[i]));
+// 		i++;
+// 	}
+// 	if (p == 0)
+// 		return ((char *)&(s[i]));
+// 	return (NULL);
+// }
 
 size_t	ft_strlen(const char *s)
 {
