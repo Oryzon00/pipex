@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 19:43:31 by ajung             #+#    #+#             */
-/*   Updated: 2022/02/14 21:48:20 by ajung            ###   ########.fr       */
+/*   Updated: 2022/02/15 15:25:36 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,6 @@ void	pipex(int infile, int outfile, t_arg_main *arg_main)
 	if (child_left == 0)
 		if (left_side(infile, pont, arg_main) == EXIT_FAILURE)
 			perror_and_exit();
-	waitpid(child_left, &status1, WNOHANG);
-	if (WIFEXITED(status1) && WEXITSTATUS(status1) == 4)
-		exit(-1);
 	child_right = fork();
 	if (child_right < 0)
 		return (perror("Fork: "));
